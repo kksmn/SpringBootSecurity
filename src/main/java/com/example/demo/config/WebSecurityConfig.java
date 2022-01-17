@@ -45,9 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .disable()
                 .authorizeRequests()
                     .antMatchers("/registration").not().fullyAuthenticated()
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/news").hasRole("USER")
-                    .antMatchers("/", "/resources/**").permitAll()
+                    .antMatchers("/admin").hasRole("ADMIN")
+                    .antMatchers("/user").hasRole("USER")
+                    .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -56,8 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
-                    .permitAll()
-                    .logoutSuccessUrl("/");
+                    .permitAll();
     }
 
 
